@@ -29,12 +29,13 @@ export class ChatComponent extends LitElement {
     .input-field {
       position: absolute;
       bottom: 2.5%;
-      width: 100%;
+      width: 102%;
 
     }
     input {
       padding: 7px 11px;
-      width: 95%
+      width: 95%;
+      border-color: var(--oryx-color-primary-6);
     }
     form {
       width: 75%;
@@ -92,11 +93,13 @@ export class ChatComponent extends LitElement {
           }
         }
       })
-    }).then((response) => {
-      console.log(response)
-      const theNewOne = html`${this.answers}<div> - ${response.body.data.attributes.answer}</div>`
-      this.answers = theNewOne
-    }).catch(error => console.log(error))
+    })
+    .then(response => response.json())
+    .then(response => {
+      const theNewOne = html`${this.answers}<div> - ${response.data.attributes.answer}</div>`
+      console.log(theNewOne)
+    })
+    .catch(error => console.log(error))
   }
 
   private _updateValue(e) {
