@@ -39,7 +39,7 @@ export class InstantChatMessages extends LitElement implements InstantChatMessag
   aNumber = 5
 
   @property({ type: Boolean })
-  isChatOpen = true
+  isChatOpen = false
 
   // public $chatInstance = computed(() => null)
   public $numberOfMessages = computed(() => this.aNumber)
